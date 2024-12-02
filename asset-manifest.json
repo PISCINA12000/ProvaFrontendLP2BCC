@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/ProvaFrontendLP2BCC.git/static/css/main.d221dc40.css",
+    "main.js": "/ProvaFrontendLP2BCC.git/static/js/main.0fbd6e82.js",
+    "static/media/pagina404.png": "/ProvaFrontendLP2BCC.git/static/media/pagina404.4bf0805d8d55a31c5142.png",
+    "index.html": "/ProvaFrontendLP2BCC.git/index.html",
+    "main.d221dc40.css.map": "/ProvaFrontendLP2BCC.git/static/css/main.d221dc40.css.map",
+    "main.0fbd6e82.js.map": "/ProvaFrontendLP2BCC.git/static/js/main.0fbd6e82.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d221dc40.css",
+    "static/js/main.0fbd6e82.js"
+  ]
+}
