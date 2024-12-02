@@ -11,8 +11,7 @@ export default function TelaLogin() {
         const usuarioDigitado = nomeUsuario.current.value;
         const senhaDigitada   = senha.current.value;
 
-        if (usuarioDigitado === 'admin' &&
-            senhaDigitada   === 'admin')
+        if (usuarioDigitado === 'admin' && senhaDigitada   === 'admin')
         {
             setUsuario({
                 "usuario":usuarioDigitado,
@@ -37,10 +36,8 @@ export default function TelaLogin() {
                         name="usuario"
                         placeholder="Informe o usuário" 
                         ref={nomeUsuario}
-                        />
-                    <Form.Text className="text-muted">
-                        Nunca compartilhe suas credenciais de acesso.
-                    </Form.Text>
+                    />
+                    <Form.Text className="text-muted"> Nunca compartilhe suas credenciais de acesso. </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -53,10 +50,8 @@ export default function TelaLogin() {
                         ref={senha}
                     />
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Login
-                </Button>
+                <Button variant="primary" type="submit"> Login </Button>
             </Form>
         </Container>
-    );
+    )
 }

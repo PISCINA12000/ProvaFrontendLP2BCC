@@ -1,12 +1,9 @@
 import { Button, Spinner, Col, Form, InputGroup, Row } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { consultarUsuario } from "../../../servicos/servicoUsuario";
-import { gravarMensagem } from '../../../servicos/servicoMensagem';
-
 import { gravarUsuario } from '../../../servicos/servicoUsuario';
 
-export default function FormCadUsuario(props) {
+export default function FormCadUsuarios(props) {
     const [usuario, setUsuario] = useState(props.usuarioSelecionado);
     const [formValidado, setFormValidado] = useState(false);
 
@@ -82,7 +79,7 @@ export default function FormCadUsuario(props) {
                         type="text"
                         id="nickname"
                         name="nickname"
-                        value={mensagem.mensagem}
+                        value={usuario.mensagem}
                         onChange={manipularMudanca}
                     />
                     <Form.Control.Feedback type="invalid">Por favor, informe o nickname do usuário!</Form.Control.Feedback>
@@ -106,12 +103,14 @@ export default function FormCadUsuario(props) {
 
             <Row className='mt-2 mb-2'>
                 <Col md={1}>
-                    <Button type="submit" disabled={!temCategorias}> {props.modoEdicao ? "Alterar" : "Confirmar"} </Button>
+                    <Button type="submit"> {props.modoEdicao ? "Alterar" : "Confirmar"} </Button>
                 </Col>
                 <Col md={{ offset: 1 }}>
-                    <Button onClick={() => {
-                        props.setExibirTabela(true);
-                    }}>Voltar</Button>
+                    <Button
+                        onClick={() => {
+                            props.setExibirTabela(true);
+                        }}>Voltar
+                    </Button>
                 </Col>
             </Row>
             <Toaster position="top-right" />

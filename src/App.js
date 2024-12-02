@@ -30,7 +30,8 @@ function App() {
         <Provider store={store}>
           <ContextoUsuario.Provider value={{ usuario, setUsuario }}>
             <BrowserRouter>
-              { //A ordem das rotas é importante 
+              {
+                //A ordem das rotas é importante 
               }
               <Routes>
                 <Route path="/usuario" element={<TelaCadastroUsuario />} />

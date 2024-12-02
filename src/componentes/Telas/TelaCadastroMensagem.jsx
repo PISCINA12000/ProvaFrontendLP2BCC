@@ -1,8 +1,8 @@
 import { Alert } from "react-bootstrap";
-import FormCadProdutos from "./Formularios/FormCadProduto";
 import Pagina from "../layouts/Pagina";
 import { useState } from "react";
-import TabelaProdutos from "./Tabelas/TabelaProdutos";
+import FormCadMensagens from "./Formularios/FormCadMensagem";
+import TabelaMensagens from "./Tabelas/TabelaMensagens";
 
 export default function TelaCadastroMensagem(props) {
     const [exibirTabela, setExibirTabela] = useState(true)
@@ -25,12 +25,12 @@ export default function TelaCadastroMensagem(props) {
                 </Alert>
                 {
                     exibirTabela ?
-                        <TabelaProdutos
+                        <TabelaMensagens
                             setExibirTabela = {setExibirTabela}
                             setModoEdicao = {setModoEdicao}
                             setMensagemSelecionada = {setMensagemSelecionada}
                         /> :
-                        <FormCadProdutos
+                        <FormCadMensagens
                             setExibirTabela = {setExibirTabela}
                             mensagemSelecionada = {mensagemSelecionada}
                             setMensagemSelecionada = {setMensagemSelecionada}

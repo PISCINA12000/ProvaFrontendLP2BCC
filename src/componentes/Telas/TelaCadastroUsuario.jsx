@@ -1,8 +1,8 @@
 import { Alert } from "react-bootstrap";
-import FormCadProdutos from "./Formularios/FormCadProduto";
 import Pagina from "../layouts/Pagina";
 import { useState } from "react";
-import TabelaProdutos from "./Tabelas/TabelaProdutos";
+import FormCadUsuarios from "./Formularios/FormCadUsuario";
+import TabelaUsuarios from "./Tabelas/TabelaUsuarios"
 
 export default function TelaCadastroUsuario(props) {
     const [exibirTabela, setExibirTabela] = useState(true)
@@ -25,12 +25,12 @@ export default function TelaCadastroUsuario(props) {
                 </Alert>
                 {
                     exibirTabela ?
-                        <TabelaProdutos
+                        <TabelaUsuarios
                             setExibirTabela={setExibirTabela}
                             setModoEdicao={setModoEdicao}
                             setUsuarioSelecionado={setUsuarioSelecionado}
                         /> :
-                        <FormCadProdutos
+                        <FormCadUsuarios
                             setExibirTabela={setExibirTabela}
                             usuarioSelecionado={usuarioSelecionado}
                             setUsuarioSelecionado={setUsuarioSelecionado}
