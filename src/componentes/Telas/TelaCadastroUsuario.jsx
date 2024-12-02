@@ -2,7 +2,7 @@ import { Alert } from "react-bootstrap";
 import Pagina from "../layouts/Pagina";
 import { useState } from "react";
 import FormCadUsuarios from "./Formularios/FormCadUsuario";
-import TabelaUsuarios from "./Tabelas/TabelaUsuarios"
+import TabelaUsuarios from "./Tabelas/TabelaUsuarios";
 
 export default function TelaCadastroUsuario(props) {
     const [exibirTabela, setExibirTabela] = useState(true)
@@ -18,7 +18,7 @@ export default function TelaCadastroUsuario(props) {
     return (
         <div>
             <Pagina>
-                |<Alert className="mt-02 mb-02 success text-center" variant="success">
+                <Alert className="mt-02 mb-02 success text-center" variant="success">
                     <h2>
                         Cadastro de Usuario
                     </h2>
@@ -26,16 +26,16 @@ export default function TelaCadastroUsuario(props) {
                 {
                     exibirTabela ?
                         <TabelaUsuarios
-                            setExibirTabela={setExibirTabela}
-                            setModoEdicao={setModoEdicao}
-                            setUsuarioSelecionado={setUsuarioSelecionado}
+                            setExibirTabela = {setExibirTabela}
+                            setModoEdicao = {setModoEdicao}
+                            setUsuarioSelecionado = {setUsuarioSelecionado}
                         /> :
                         <FormCadUsuarios
-                            setExibirTabela={setExibirTabela}
-                            usuarioSelecionado={usuarioSelecionado}
-                            setUsuarioSelecionado={setUsuarioSelecionado}
-                            modoEdicao={modoEdicao}
-                            setModoEdicao={setModoEdicao}
+                            setExibirTabela = {setExibirTabela}
+                            usuarioSelecionado = {usuarioSelecionado}
+                            setUsuarioSelecionado = {setUsuarioSelecionado}
+                            modoEdicao = {modoEdicao}
+                            setModoEdicao = {setModoEdicao}
                         />
                 }
             </Pagina>

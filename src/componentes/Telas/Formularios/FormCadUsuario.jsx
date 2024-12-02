@@ -4,45 +4,32 @@ import toast, { Toaster } from 'react-hot-toast';
 import { gravarUsuario } from '../../../servicos/servicoUsuario';
 
 export default function FormCadUsuarios(props) {
-    const [usuario, setUsuario] = useState(props.usuarioSelecionado);
-    const [formValidado, setFormValidado] = useState(false);
+    const [usuario, setUsuario] = useState(props.usuarioSelecionado)
+    const [formValidado, setFormValidado] = useState(false)
 
     function manipularSubmissao(evento) {
-        const form = evento.currentTarget;
+        const form = evento.currentTarget
         if (form.checkValidity()) {
 
             if (!props.modoEdicao) {
-                //cadastrar o produto
                 gravarUsuario(usuario)
                     .then((resultado) => {
                         if (resultado.status) {
-                            //exibir tabela com o produto incluído
-                            props.setExibirTabela(true);
+                            props.setExibirTabela(true)
                         }
                         else {
-                            toast.error(resultado.mensagem);
+                            toast.error(resultado.mensagem)
                         }
                     })
             }
             else {
-                //editar o produto
-                /*altera a ordem dos registros
-                props.setListaDeProdutos([...props.listaDeProdutos.filter(
-                    (item) => {
-                        return item.codigo !== produto.codigo;
-                    }
-                ), produto]);*/
-
-                //não altera a ordem dos registros
                 props.setListaDeUsuarios(props.listaDeUsuarios.map((item) => {
                     if (item.id !== usuario.id)
                         return item
                     else
                         return usuario
-                }));
-
-                //voltar para o modo de inclusão
-                props.setModoEdicao(false);
+                }))
+                props.setModoEdicao(false)
                 props.setUsuarioSelecionado({
                     id: 0,
                     nickname: "",
@@ -53,15 +40,15 @@ export default function FormCadUsuarios(props) {
             }
         }
         else {
-            setFormValidado(true);
+            setFormValidado(true)
         }
-        evento.preventDefault();
-        evento.stopPropagation();
+        evento.preventDefault()
+        evento.stopPropagation()
     }
 
     function manipularMudanca(evento) {
-        const elemento = evento.target.name;
-        const valor = evento.target.value;
+        const elemento = evento.target.name
+        const valor = evento.target.value
         setUsuario({
             ...usuario,
             [elemento]: valor
@@ -108,7 +95,7 @@ export default function FormCadUsuarios(props) {
                 <Col md={{ offset: 1 }}>
                     <Button
                         onClick={() => {
-                            props.setExibirTabela(true);
+                            props.setExibirTabela(true)
                         }}>Voltar
                     </Button>
                 </Col>

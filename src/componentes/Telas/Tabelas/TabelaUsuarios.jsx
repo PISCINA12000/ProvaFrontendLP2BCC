@@ -5,13 +5,12 @@ import { useEffect } from "react";
 import ESTADO from "../../../redux/estados";
 
 export default function TabelaUsuarios(props) {
-    //recuperar o estado da aplicação / fatia produto
     const {estado, mensagem, listaDeUsuarios} = useSelector(state => state.usuario);
     const despachante = useDispatch();
     
     useEffect(()=>{
         despachante(buscarUsuarios());
-    },[despachante]); //ciclo de vida de atualização do componente
+    },[despachante]);
 
     function editarUsuario(usuario){
         props.setModoEdicao(true);
@@ -95,5 +94,5 @@ export default function TabelaUsuarios(props) {
                 </Container>
             </>
         )
-    } // fim else if ESTADO.OCIOSO
+    }
 }

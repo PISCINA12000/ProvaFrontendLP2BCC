@@ -5,26 +5,26 @@ import { consultarUsuario } from "../../../servicos/servicoUsuario";
 import { gravarMensagem } from '../../../servicos/servicoMensagem';
 
 export default function FormCadMensagens(props) {
-    const [mensagem, setMensagem] = useState(props.mensagemSelecionada);
-    const [formValidado, setFormValidado] = useState(false);
-    const [usuarios, setUsuarios] = useState([]);
-    const [temUsuarios, setTemUsuarios] = useState(false);
+    const [mensagem, setMensagem] = useState(props.mensagemSelecionada)
+    const [formValidado, setFormValidado] = useState(false)
+    const [usuarios, setUsuarios] = useState([])
+    const [temUsuarios, setTemUsuarios] = useState(false)
 
     useEffect(()=>{
         consultarUsuario().then((resultado)=>{
             if (Array.isArray(resultado)){
-                setUsuarios(resultado);
-                setTemUsuarios(true);
+                setUsuarios(resultado)
+                setTemUsuarios(true)
             }
             else{
-                toast.error("Não foi possível carregar os usuários");
+                toast.error("Não foi possível carregar os usuários")
             }
         }).catch((erro)=>{
-            setTemUsuarios(false);
-            toast.error("Não foi possível carregar os usuários");
+            setTemUsuarios(false)
+            toast.error("Não foi possível carregar os usuários")
         })
         
-    },[]); //didMount
+    },[]);
 
     function selecionarUsuario(evento){
         setMensagem({
@@ -36,41 +36,28 @@ export default function FormCadMensagens(props) {
     }
 
     function manipularSubmissao(evento) {
-        const form = evento.currentTarget;
+        const form = evento.currentTarget
         if (form.checkValidity()) {
 
             if (!props.modoEdicao) {
-                //cadastrar o produto
                 gravarMensagem(mensagem)
                 .then((resultado)=>{
                     if (resultado.status){
-                        //exibir tabela com o produto incluído
-                        props.setExibirTabela(true);
+                        props.setExibirTabela(true)
                     }
                     else{
-                        toast.error(resultado.mensagem);
+                        toast.error(resultado.mensagem)
                     }
                 })
             }
             else {
-                //editar o produto
-                /*altera a ordem dos registros
-                props.setListaDeProdutos([...props.listaDeProdutos.filter(
-                    (item) => {
-                        return item.codigo !== produto.codigo;
-                    }
-                ), produto]);*/
-
-                //não altera a ordem dos registros
                 props.setListaDeMensagens(props.listaDeMensagens.map((item) => {
                     if (item.id !== mensagem.id)
                         return item
                     else
                         return mensagem
-                }));
-
-                //voltar para o modo de inclusão
-                props.setModoEdicao(false);
+                }))
+                props.setModoEdicao(false)
                 props.setMensagemSelecionada({
                     id: 0,
                     dataHora: "",
@@ -82,15 +69,15 @@ export default function FormCadMensagens(props) {
             }
         }
         else {
-            setFormValidado(true);
+            setFormValidado(true)
         }
-        evento.preventDefault();
-        evento.stopPropagation();
+        evento.preventDefault()
+        evento.stopPropagation()
     }
 
     function manipularMudanca(evento) {
-        const elemento = evento.target.name;
-        const valor = evento.target.value;
+        const elemento = evento.target.name
+        const valor = evento.target.value
         setMensagem({
             ...mensagem,
             [elemento]: valor 
@@ -151,7 +138,7 @@ export default function FormCadMensagens(props) {
                 </Col>
                 <Col md={{ offset: 1 }}>
                     <Button onClick={() => {
-                        props.setExibirTabela(true);
+                        props.setExibirTabela(true)
                     }}>Voltar</Button>
                 </Col>
             </Row>

@@ -3,13 +3,13 @@ import { useContext, useRef } from "react";
 import { ContextoUsuario } from "../../App";
 
 export default function TelaLogin() {
-    const nomeUsuario = useRef();
-    const senha = useRef();
-    const {usuario,setUsuario} = useContext(ContextoUsuario);
+    const nomeUsuario = useRef()
+    const senha = useRef()
+    const {usuario, setUsuario} = useContext(ContextoUsuario)
     
     function manipularSubmissao(evento){
-        const usuarioDigitado = nomeUsuario.current.value;
-        const senhaDigitada   = senha.current.value;
+        const usuarioDigitado = nomeUsuario.current.value
+        const senhaDigitada   = senha.current.value
 
         if (usuarioDigitado === 'admin' && senhaDigitada   === 'admin')
         {
@@ -18,8 +18,8 @@ export default function TelaLogin() {
                 "logado":true
             })
         }
-        evento.preventDefault();
-        evento.stopPropagation();
+        evento.preventDefault()
+        evento.stopPropagation()
     }
     
     

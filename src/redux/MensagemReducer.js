@@ -4,9 +4,8 @@ import { consultarMensagem, excluirMensagem } from "../servicos/servicoMensagem"
 import ESTADO from "./estados";
 
 export const buscarMensagens = createAsyncThunk('buscarMensagens', async ()=>{
-    //lista de mensagens
+    
     const resultado = await consultarMensagem()
-    //se for um array/lista a consulta funcionou
     try {
         if (Array.isArray(resultado)){
             return {
@@ -34,11 +33,8 @@ export const buscarMensagens = createAsyncThunk('buscarMensagens', async ()=>{
 });
 
 export const apagarMensagem = createAsyncThunk('apagarMensagem', async (mensagem)=>{
-    //dar previsibilidade ao conteúdo do payload
-    //lista de mensagens
     console.log(mensagem)
     const resultado = await excluirMensagem(mensagem)
-    //se for um array/lista a consulta funcionou
     console.log(resultado);
     try {
         return {
@@ -69,32 +65,32 @@ const mensagemReducer = createSlice({
         })
         .addCase(buscarMensagens.fulfilled, (state, action) =>{
           if (action.payload.status){
-            state.estado = ESTADO.OCIOSO;
-            state.mensagem = action.payload.mensagem;
-            state.listaDeMensagens = action.payload.listaDeMensagens;
+            state.estado = ESTADO.OCIOSO
+            state.mensagem = action.payload.mensagem
+            state.listaDeMensagens = action.payload.listaDeMensagens
           } 
           else{
-            state.estado = ESTADO.ERRO;
-            state.mensagem = action.payload.mensagem;
-            state.listaDeMensagens = action.payload.listaDeMensagens;
+            state.estado = ESTADO.ERRO
+            state.mensagem = action.payload.mensagem
+            state.listaDeMensagens = action.payload.listaDeMensagens
           } 
         })
         .addCase(buscarMensagens.rejected, (state, action) =>{
-            state.estado = ESTADO.ERRO;
-            state.mensagem = action.payload.mensagem;
-            state.listaDeMensagens = action.payload.listaDeMensagens;
+            state.estado = ESTADO.ERRO
+            state.mensagem = action.payload.mensagem
+            state.listaDeMensagens = action.payload.listaDeMensagens
         })
         .addCase(apagarMensagem.pending, (state,action) =>{
-            state.estado = ESTADO.PENDENTE;
-            state.mensagem = action.payload.mensagem;
+            state.estado = ESTADO.PENDENTE
+            state.mensagem = action.payload.mensagem
         })
         .addCase(apagarMensagem.fulfilled,(state,action) =>{
-            state.estado = ESTADO.OCIOSO;
-            state.mensagem = action.payload.mensagem;
+            state.estado = ESTADO.OCIOSO
+            state.mensagem = action.payload.mensagem
         })
         .addCase(apagarMensagem.rejected,(state,action)=>{
-            state.estado = ESTADO.ERRO;
-            state.mensagem = ""//action.payload.mensagem;
+            state.estado = ESTADO.ERRO
+            state.mensagem = ""
         })
     }
 })

@@ -5,13 +5,12 @@ import { useEffect } from "react";
 import ESTADO from "../../../redux/estados";
 
 export default function TabelaMensagens(props) {
-    //recuperar o estado da aplicação / fatia produto
     const {estado, mensagem, listaDeMensagens} = useSelector(state => state.mensagem);
     const despachante = useDispatch();
     
     useEffect(()=>{
         despachante(buscarMensagens());
-    },[despachante]); //ciclo de vida de atualização do componente
+    },[despachante]);
 
     function editarMensagem(mensagem){
         props.setModoEdicao(true);
@@ -97,5 +96,5 @@ export default function TabelaMensagens(props) {
                 </Container>
             </>
         )
-    } // fim else if ESTADO.OCIOSO
+    }
 }
